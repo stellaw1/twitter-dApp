@@ -1,8 +1,18 @@
 <script setup>
 import { useRoute } from 'vue-router'
 import TheSidebar from './components/TheSidebar'
+import { PhantomWalletAdapter } from '@solana/wallet-adapter-wallets'
+import { initWallet } from 'solana-wallets-vue'
+import { initWorkspace } from '@/composables'
 
 const route = useRoute()
+
+const wallets = [
+  new PhantomWalletAdapter(),
+]
+
+initWallet({ wallets, autoConnect: true})
+initWorkspace() //can now access workspace from any component
 </script>
 
 <template>
